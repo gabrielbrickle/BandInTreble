@@ -52,12 +52,12 @@ body {
     display: none;
 }
 .logo {
-    color: #f60;
-    font-size: 30px;
-    font-family: 'Dosis', sans-serif;
-    margin-left: 1005px;
-    margin-top: -52px;
-    text-shadow: 1px 1px 1px #000;
+  color: #fff;
+  font-size: 23px;
+  font-family: 'Dosis', sans-serif;
+  margin-left: 1005px;
+  margin-top: -52px;
+  text-shadow: 1px 1px 1px #000;
 }
 .logo:hover {
     background-color: #00bcd4;
@@ -155,12 +155,10 @@ li {
     float: left;
 }
 .logopic {
-    width: 5%;
-    float: right;
-    margin-top: -60px;
-    margin-right: 96px;
-    opacity: .7;
-    z-index: -2;
+  width: 3%;
+  float: right;
+  margin-top: -49px;
+  margin-right: 186px;
 }
 li a {
     display: block;

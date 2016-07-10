@@ -1,21 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('AvailableController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-            // $scope.bandManagerSelect = function() {
-            //     console.log('clicked band manger options')
-            //     $location.path('/available');
-            //     // MusicFactory.getMusician.user();
-            //     $scope.musician = MusicFactory.getMusician();
-            // }
-            // $scope.musicianSelect = function() {
-            //     console.log('clicked musical instruments')
-            //         ////need to make sure they can select multiple before they are redirected to the lookingfor page
-            //     $location.path('/lookingfor');
-            //     // MusicFactory.getBandManager.user();
-            //     $scope.bandmanager = MusicFactory.getBandManager();
-            //
-            //
-            // }
+
             }]);
         }
 
@@ -39,9 +25,14 @@ module.exports = function(app) {
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
-            // $location.path('/available');
+            $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
           $scope.musician = MusicFactory.getMusician($scope.instrument);
+<<<<<<< HEAD
+
+          console.log($scope.musician)
+=======
+>>>>>>> 3b9d38fc80c81a7bf6fefa67739d51e255bf0ec7
         }
         console.log($scope.musician)
 ///Right side box on homepage
@@ -60,9 +51,8 @@ module.exports = function(app) {
 },{}],3:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('LookingForController', ['$scope', '$http', function($scope, $http) {
-        $scope.loginClick = function() {
-            console.log('clicked')
-        }
+      $scope.musician = "";
+      
     }]);
 };
 
@@ -90,7 +80,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/lookingfor', {
-            controller: 'LookingForController',
+            controller: 'HomeController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);
@@ -136,8 +126,12 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
+<<<<<<< HEAD
+            });
+=======
                   return musicianPeople;
                       });
+>>>>>>> 3b9d38fc80c81a7bf6fefa67739d51e255bf0ec7
         },
         getBandManager: function() {
             $http({

@@ -51,8 +51,8 @@ body {
   display: none; }
 
 .logo {
-  color: #f60;
-  font-size: 30px;
+  color: #fff;
+  font-size: 23px;
   font-family: 'Dosis', sans-serif;
   margin-left: 1005px;
   margin-top: -52px;
@@ -154,12 +154,10 @@ li {
   float: left; }
 
 .logopic {
-  width: 5%;
+  width: 3%;
   float: right;
-  margin-top: -60px;
-  margin-right: 96px;
-  opacity: .7;
-  z-index: -2; }
+  margin-top: -49px;
+  margin-right: 186px; }
 
 li a {
   display: block;

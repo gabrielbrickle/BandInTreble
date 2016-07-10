@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/lookingfor', {
-            controller: 'LookingForController',
+            controller: 'HomeController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);
@@ -67,6 +67,7 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
+
                   return musicianPeople;
                       });
         },
