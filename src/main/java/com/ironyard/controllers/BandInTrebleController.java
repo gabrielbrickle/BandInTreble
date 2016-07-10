@@ -120,7 +120,7 @@ public class BandInTrebleController
     //
     //THE STRING RETURNED HAS TO MATCH THE VARIABLE EXACTLY SO I CAN MANIPULATE IT PROPERLY
     @RequestMapping(path = "/band-manager", method = RequestMethod.GET)
-    public Iterable<Musician> getMusician(HttpSession session, String instruments)
+    public Iterable<Musician> getMusician(HttpSession session,@RequestParam String instruments)
     {
         switch (instruments)
         {
