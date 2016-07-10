@@ -1,9 +1,8 @@
 body {
-    /*background: url(https://philspector.files.wordpress.com/2010/06/capsula.jpg) no-repeat 50% 20% fixed;*/
     background: transparent url("https://s3.sonicbids.com/marketing/homepage.jpg") 50% 50% no-repeat;
-    background-size: cover;
+    background-size: auto;
+    ;
     color: #fff;
-    position: relative;
 }
 .loginpage {
     margin-left: 36%;
@@ -81,7 +80,7 @@ body {
     width: 55%;
     border: solid 1px #d65600;
     font-size: 11px;
-    margin-left: 20%;
+    margin-left: 15%;
 }
 .musician h2 {
     color: #f60;
@@ -94,6 +93,10 @@ body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: white;
     text-align: center;
+}
+.musician button {
+    margin-left: 45%;
+    margin-top: 5%;
 }
 .bandmanager {
     border: solid 2px #fff;
