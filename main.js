@@ -32,6 +32,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
     let musicianPeople = [];
     let bandmanagerPeople = [];
+    let instruments = [];
     return {
         // todo: rename this to be more specific
         postThis: function(name) {
@@ -53,8 +54,8 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                 url:'/band-manager',
                 method: 'GET',
             }).then(function(response) {
-              // console.log('response')
                 let musicians = response.data;
+                console.log(musicians)
                 musicians.forEach(function(element) {
                     musicianPeople.push(element.value);
                 })
@@ -64,9 +65,8 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             $http({
                 url: '/musician',
                 method: 'GET',
-
             }).then(function(response) {
-                let bandmanager = response.data;
+                let bandmanager = response.data
                 console.log(bandmanager);
                 bandmanager.forEach(function(element) {
                     bandmanagerPeople.push(element.value);
