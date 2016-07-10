@@ -178,4 +178,24 @@ public class Musician
     {
         this.user = user;
     }
+
+    public double getRating()
+    {
+        return rating;
+    }
+
+    public void setRating(double rating)
+    {
+        this.rating = rating;
+    }
+
+    public double getHourlyRate()
+    {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate)
+    {
+        this.hourlyRate = hourlyRate;
+    }
 }
