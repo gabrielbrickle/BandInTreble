@@ -143,6 +143,8 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             });
 
         },
+
+
     }; // end return
 }]);
 
