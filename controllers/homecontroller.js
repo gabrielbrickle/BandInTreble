@@ -15,10 +15,10 @@ module.exports = function(app) {
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
-            $location.path('/lookingfor');
+            // $location.path('/available');
             // MusicFactory.getMusician.user();
-          $scope.musician = MusicFactory.getMusician();
-          console.log($scope.musician)
+        $scope.musician=  MusicFactory.getMusician();
+
         }
 ///Right side box on homepage
         $scope.musicianSelect = function() {
