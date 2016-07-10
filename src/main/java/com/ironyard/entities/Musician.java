@@ -44,11 +44,16 @@ public class Musician
     @OneToOne
     User user;
 
+    double rating;
+
+    @Column(nullable = false)
+    double hourlyRate;
+
     public Musician()
     {
     }
 
-    public Musician(Boolean drummer, Boolean leadGuitarist, Boolean backupGuitarist, Boolean leadSinger, Boolean backupSinger, Boolean bassist, Boolean tambourine, Boolean cowBellPlayer, Boolean pianist, User user)
+    public Musician(Boolean drummer, Boolean leadGuitarist, Boolean backupGuitarist, Boolean leadSinger, Boolean backupSinger, Boolean bassist, Boolean tambourine, Boolean cowBellPlayer, Boolean pianist, User user, double rating, double hourlyRate)
     {
         this.drummer = drummer;
         this.leadGuitarist = leadGuitarist;
@@ -60,6 +65,8 @@ public class Musician
         this.cowBellPlayer = cowBellPlayer;
         this.pianist = pianist;
         this.user = user;
+        this.rating = rating;
+        this.hourlyRate = hourlyRate;
     }
 
     public int getId()
