@@ -20,8 +20,12 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'AvailableController',
             templateUrl: 'templates/available.html',
         })
-        .when('/lookingfor', {
-            controller: 'HomeController',
+        .when('/booking', {
+            controller: 'LookingForController',
+            templateUrl: 'templates/booking.html',
+        })
+        .when('/lookingfor/:instrument', {
+            controller: 'LookingForController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);
@@ -30,9 +34,10 @@ app.config(['$routeProvider', function($routeProvider) {
 // THIS IS THE SERVICE BREH BRO
 //
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
-    let musicianPeople = [{}];
+    let musicianPeople = [];
     let bandmanagerPeople = [];
     let instruments = [];
+
     return {
         // todo: rename this to be more specific
         postThis: function(name) {
@@ -50,25 +55,30 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             });
         },
         getMusician: function(musicguy) {
+          console.log('mg:', musicguy);
             $http({
-                url:'/band-manager',
+                url: '/band-manager',
                 method: 'GET',
-                 params:{ instruments: musicguy}
+                params: {
+                    instruments: musicguy
+                }
             }).then(function(response) {
                 let musicians = response.data;
-                console.log(musicians)
+                musicianPeople.length = 0;
                 musicians.forEach(function(element) {
                     musicianPeople.push({
-                      name: element.user.name,
-                      hourlyRate: element.hourlyRate,
-                      rating: element.rating,
-                      email: element.user.email,
+                        name: element.user.name,
+                        hourlyRate: element.hourlyRate,
+                        rating: element.rating,
+                        email: element.user.email,
                     })
 
                 })
 
-                  return musicianPeople;
-                      });
+                console.log(musicianPeople);
+                console.log(musicianPeople.length)
+            });
+            return musicianPeople;
         },
         getBandManager: function() {
             $http({
