@@ -52,12 +52,12 @@ body {
     display: none;
 }
 .logo {
-  color: #fff;
-  font-size: 23px;
-  font-family: 'Dosis', sans-serif;
-  margin-left: 1005px;
-  margin-top: -52px;
-  text-shadow: 1px 1px 1px #000;
+    color: #fff;
+    font-size: 23px;
+    font-family: 'Dosis', sans-serif;
+    margin-left: 1005px;
+    margin-top: -52px;
+    text-shadow: 1px 1px 1px #000;
 }
 .logo:hover {
     background-color: #00bcd4;
@@ -155,10 +155,10 @@ li {
     float: left;
 }
 .logopic {
-  width: 3%;
-  float: right;
-  margin-top: -49px;
-  margin-right: 186px;
+    width: 3%;
+    float: right;
+    margin-top: -49px;
+    margin-right: 186px;
 }
 li a {
     display: block;
@@ -172,4 +172,30 @@ li a {
 
 li a:hover {
     background-color: #111;
+}
+.lookingforpage {
+    width: 75%;
+    text-align: center;
+    border: solid 2px #fff;
+    height: 400px;
+    overflow: scroll;
+    margin-left: 13%;
+    background-color: black;
+    opacity: .7;
+    margin-top: 5%;
+}
+.lookingforpage h3 {
+    margin-top: -48px;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 50px;
+    color: white;
+    font-size: 50px;
+    letter-spacing: -.05em;
+    line-height: 1em;
+    padding: 75px 0 0;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.lookingforpage:hover {
+  border: solid 2px #f60;
+
 }

@@ -9,33 +9,29 @@ module.exports = function(app) {
 
 },{}],2:[function(require,module,exports){
 module.exports = function(app) {
-    app.controller('HomeController',['MusicFactory','$scope','$location',function(MusicFactory,$scope, $location) {
+    app.controller('HomeController', ['MusicFactory', '$scope', '$location', function(MusicFactory, $scope, $location) {
         $scope.loginClick = function() {
-          MusicFactory.postThis($scope.username)
+            MusicFactory.postThis($scope.username)
             console.log('clicked')
-            if ($scope.username != null){
-              $location.path('/home');
+            if ($scope.username != null) {
+                $location.path('/home');
             } else {
-              alert ('Please enter a username');
+                alert('Please enter a username');
             }
         }
-    $scope.instrument = "";
-    $scope.managers = "";
-//Left side box on homepage
-    $scope.bandManagerSelect = function() {
-            console.log($scope.instrument)
-            // if ($scope.instrument === )
-            $location.path('/lookingfor');
-            // MusicFactory.getMusician.user();
-          $scope.musician = MusicFactory.getMusician();
-        }
-        console.log($scope.musician)
-///Right side box on homepage
+        $scope.instrument = "";
+        $scope.managers = "";
+        $scope.musicians= [];
+        //Left side box on homepage
+        $scope.bandManagerSelect = function() {
+                // console.log($scope.instrument
+                $location.path(`/lookingfor/${$scope.instrument}`);
+                // $scope.musicians = MusicFactory.getMusician($scope.instrument);
+            }
+            ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
-            ////need to make sure they can select multiple before they are redirected to the lookingfor page
-            // $location.path('/lookingfor');
-            // MusicFactory.getBandManager.user();
+                // $location.path('/available');
             let logan = MusicFactory.getBandManager();
             console.log(logan);
 
@@ -45,9 +41,14 @@ module.exports = function(app) {
 
 },{}],3:[function(require,module,exports){
 module.exports = function(app) {
-    app.controller('LookingForController', ['$scope', '$http', function($scope, $http) {
-      $scope.musician = "";
-      
+    app.controller('LookingForController', ['$scope', '$http', 'MusicFactory', '$routeParams', '$location', function($scope, $http, MusicFactory, $routeParams, $location) {
+      $scope.musicians = MusicFactory.getMusician($routeParams.instrument);
+
+      $scope.bookClick = function() {
+        console.log("clicking book");
+        $location.path('/booking');
+      }
+
     }]);
 };
 
@@ -74,8 +75,12 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'AvailableController',
             templateUrl: 'templates/available.html',
         })
-        .when('/lookingfor', {
-            controller: 'HomeController',
+        .when('/booking', {
+            controller: 'LookingForController',
+            templateUrl: 'templates/booking.html',
+        })
+        .when('/lookingfor/:instrument', {
+            controller: 'LookingForController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);
@@ -84,9 +89,10 @@ app.config(['$routeProvider', function($routeProvider) {
 // THIS IS THE SERVICE BREH BRO
 //
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
-    let musicianPeople = [{}];
+    let musicianPeople = [];
     let bandmanagerPeople = [];
     let instruments = [];
+
     return {
         // todo: rename this to be more specific
         postThis: function(name) {
@@ -104,26 +110,30 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             });
         },
         getMusician: function(musicguy) {
+          console.log('mg:', musicguy);
             $http({
-                url:'/band-manager',
+                url: '/band-manager',
                 method: 'GET',
-                 params:{ instruments: musicguy}
+                params: {
+                    instruments: musicguy
+                }
             }).then(function(response) {
                 let musicians = response.data;
-                console.log(musicians)
+                musicianPeople.length = 0;
                 musicians.forEach(function(element) {
                     musicianPeople.push({
-                      name: element.user.name,
-                      hourlyRate: element.hourlyRate,
-                      rating: element.rating,
-                      email: element.user.email,
-
+                        name: element.user.name,
+                        hourlyRate: element.hourlyRate,
+                        rating: element.rating,
+                        email: element.user.email,
                     })
 
                 })
 
-                  return musicianPeople;
-                      });
+                console.log(musicianPeople);
+                console.log(musicianPeople.length)
+            });
+            return musicianPeople;
         },
         getBandManager: function() {
             $http({
