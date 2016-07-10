@@ -79,7 +79,7 @@ body {
   width: 55%;
   border: solid 1px #d65600;
   font-size: 11px;
-  margin-left: 20%; }
+  margin-left: 15%; }
 
 .musician h2 {
   color: #f60;
@@ -92,6 +92,10 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
   text-align: center; }
+
+.musician button {
+  margin-left: 45%;
+  margin-top: 5%; }
 
 .bandmanager {
   border: solid 2px #fff;
