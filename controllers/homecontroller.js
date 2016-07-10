@@ -17,9 +17,9 @@ module.exports = function(app) {
             // if ($scope.instrument === )
             $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
-          $scope.musician = MusicFactory.getMusician($scope.instrument);
+          $scope.musician = MusicFactory.getMusician();
+          console.log($scope.musician)
         }
-        console.log($scope.musician)
 ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)

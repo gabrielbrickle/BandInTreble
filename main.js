@@ -63,7 +63,6 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                       hourlyRate: element.hourlyRate,
                       rating: element.rating,
                       email: element.user.email,
-
                     })
 
                 })

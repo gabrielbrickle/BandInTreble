@@ -27,14 +27,9 @@ module.exports = function(app) {
             // if ($scope.instrument === )
             $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
-          $scope.musician = MusicFactory.getMusician($scope.instrument);
-<<<<<<< HEAD
-
+          $scope.musician = MusicFactory.getMusician();
           console.log($scope.musician)
-=======
->>>>>>> 3b9d38fc80c81a7bf6fefa67739d51e255bf0ec7
         }
-        console.log($scope.musician)
 ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
@@ -122,16 +117,12 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                       hourlyRate: element.hourlyRate,
                       rating: element.rating,
                       email: element.user.email,
-
                     })
 
                 })
-<<<<<<< HEAD
-            });
-=======
+
                   return musicianPeople;
                       });
->>>>>>> 3b9d38fc80c81a7bf6fefa67739d51e255bf0ec7
         },
         getBandManager: function() {
             $http({
