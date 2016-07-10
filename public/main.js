@@ -21,16 +21,15 @@ module.exports = function(app) {
         }
     $scope.instrument = "";
     $scope.managers = "";
-    $scope.renderMusician =[],
 //Left side box on homepage
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
             $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
-          $scope.musician =  MusicFactory.getMusician($scope.instrument);
+          $scope.musician = MusicFactory.getMusician($scope.instrument);
 
-          console.log(renderMusician)
+          console.log($scope.musician)
         }
 ///Right side box on homepage
         $scope.musicianSelect = function() {
@@ -123,8 +122,6 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
-                angular.copy(musicianPeople, renderMusician)
-                console.log(musicianPeople)
             });
         },
         getBandManager: function() {

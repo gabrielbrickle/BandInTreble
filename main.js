@@ -67,7 +67,6 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
-                angular.copy(musicianPeople, )
             });
         },
         getBandManager: function() {
