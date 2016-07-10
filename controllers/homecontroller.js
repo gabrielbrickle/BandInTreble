@@ -17,7 +17,7 @@ module.exports = function(app) {
         }
         $scope.musicianSelect = function() {
             console.log('clicked musical instruments')
-            ////need to make sure they can select multiple before they are redirected to the lookingfor page
+            //need to make sure they can select multiple before they are redirected to the lookingfor page
             // $location.path('/lookingfor');
             // MusicFactory.getBandManager.user();
             $scope.bandmanager = MusicFactory.getBandManager();
