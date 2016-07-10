@@ -33,8 +33,10 @@ module.exports = function(app) {
               alert ('Please enter a username');
             }
         }
+    $scope.instrument = "";
+
     $scope.bandManagerSelect = function() {
-            console.log('clicked band manger options')
+            console.log($scope.instrument)
             // $location.path('/available');
             // MusicFactory.getMusician.user();
             $scope.musician = MusicFactory.getMusician();

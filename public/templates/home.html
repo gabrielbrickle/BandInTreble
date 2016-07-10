@@ -3,8 +3,8 @@
 <div class="bandmanager">
   <h2>I book gigs </h2>
   <h4>Tell us what type of musician you're looking for.</h4>
-    <select ng-click="bandManagerSelect()">
-    <option ng-load="bandmanager" value="leadGuitarist">Lead Guitarist</option>
+    <select ng-model="instrument">
+    <option value="leadGuitarist">Lead Guitarist</option>
     <option value="drummer" selected>Drummer</option>
     <option value="backupGuitarist">Backup Guitarist</option>
     <option value="leadGuitarist">Lead Guitarist</option>
@@ -14,6 +14,8 @@
     <option value="cowBellPlayer">Cowbell Player</option>
     <option value="pianist">Pianist</option>
   </select>
+  <button type="button" name="button" ng-click="bandManagerSelect()">Let's go!</button>
+
 
 </div>
 <div class="musician">
