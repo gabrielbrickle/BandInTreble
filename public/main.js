@@ -35,14 +35,17 @@ module.exports = function(app) {
         }
     $scope.instrument = "";
     $scope.managers = "";
-
+//Left side box on homepage
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
             // $location.path('/available');
             // MusicFactory.getMusician.user();
-            $scope.musician = MusicFactory.getMusician();
+          $scope.musician =  MusicFactory.getMusician();
+
+
         }
+///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
             ////need to make sure they can select multiple before they are redirected to the lookingfor page
@@ -120,13 +123,17 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             $http({
                 url:'/band-manager',
                 method: 'GET',
+                params:{ instruments:'drummer'}
             }).then(function(response) {
                 let musicians = response.data;
                 console.log(musicians)
                 musicians.forEach(function(element) {
+                  if(musicguy === element.value){
                     musicianPeople.push(element.value);
+                  }
                 })
             });
+            console.log(musicianPeople)
         },
         getBandManager: function() {
             $http({
