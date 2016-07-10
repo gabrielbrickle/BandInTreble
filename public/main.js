@@ -44,8 +44,8 @@ module.exports = function(app) {
             //need to make sure they can select multiple before they are redirected to the lookingfor page
             // $location.path('/lookingfor');
             // MusicFactory.getBandManager.user();
-            $scope.bandmanager = MusicFactory.getBandManager();
-
+            let logan = MusicFactory.getBandManager();
+            console.log(logan);
 
         }
     }]);
@@ -116,13 +116,11 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                 url:'/band-manager',
                 method: 'GET',
             }).then(function(response) {
-              console.log('response')
+              // console.log('response')
                 let musicians = response.data;
-                console.log(musicians);
                 musicians.forEach(function(element) {
                     musicianPeople.push(element.value);
                 })
-
             });
         },
         getBandManager: function() {
@@ -137,7 +135,9 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     bandmanagerPeople.push(element.value);
                 })
                 console.log("gotit")
+
             });
+
         },
     }; // end return
 }]);
