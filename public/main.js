@@ -123,13 +123,13 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
             $http({
                 url:'/band-manager',
                 method: 'GET',
-                 params:{ instruments:'drummer'}
+                 params:{ instruments: musicguy}
             }).then(function(response) {
                 let musicians = response.data;
                 console.log(musicians)
                 musicians.forEach(function(element) {
                   if(musicguy.toLowerCase === element.value){
-                    musicianPeople.push('gabe')
+                    musicianPeople.push(element)
                   }
                 })
             });
