@@ -30,7 +30,7 @@ app.config(['$routeProvider', function($routeProvider) {
 // THIS IS THE SERVICE BREH BRO
 //
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
-    let musicianPeople = [];
+    let musicianPeople = [{}];
     let bandmanagerPeople = [];
     let instruments = [];
     return {
@@ -58,12 +58,17 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                 let musicians = response.data;
                 console.log(musicians)
                 musicians.forEach(function(element) {
-                  if(musicguy.toLowerCase === element.value){
-                    musicianPeople.push(element)
-                  }
+                    musicianPeople.push({
+                      name: element.user.name,
+                      hourlyRate: element.hourlyRate,
+                      rating: element.rating,
+                      email: element.user.email,
+
+                    })
+
                 })
+                angular.copy(musicianPeople, )
             });
-            console.log(musicianPeople)
         },
         getBandManager: function() {
             $http({
@@ -75,7 +80,7 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                 bandmanager.forEach(function(element) {
                     bandmanagerPeople.push(element.value);
                 })
-                console.log("gotit")
+                console.log(bandmanager)
 
             });
 
