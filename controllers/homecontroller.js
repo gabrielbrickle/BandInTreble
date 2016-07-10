@@ -9,15 +9,19 @@ module.exports = function(app) {
               alert ('Please enter a username');
             }
         }
+    $scope.instrument = "";
+    $scope.managers = "";
+
     $scope.bandManagerSelect = function() {
-            console.log('clicked band manger options')
+            console.log($scope.instrument)
+            // if ($scope.instrument === )
             // $location.path('/available');
             // MusicFactory.getMusician.user();
             $scope.musician = MusicFactory.getMusician();
         }
         $scope.musicianSelect = function() {
-            console.log('clicked musical instruments')
-            //need to make sure they can select multiple before they are redirected to the lookingfor page
+            console.log($scope.managers)
+            ////need to make sure they can select multiple before they are redirected to the lookingfor page
             // $location.path('/lookingfor');
             // MusicFactory.getBandManager.user();
             let logan = MusicFactory.getBandManager();
