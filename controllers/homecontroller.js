@@ -17,7 +17,7 @@ module.exports = function(app) {
             // if ($scope.instrument === )
             // $location.path('/available');
             // MusicFactory.getMusician.user();
-          $scope.musician =  MusicFactory.getMusician();
+          $scope.musician =  MusicFactory.getMusician($scope.instrument);
 
 
         }

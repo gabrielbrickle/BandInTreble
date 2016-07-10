@@ -49,17 +49,17 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                 console.log("posted")
             });
         },
-        getMusician: function() {
+        getMusician: function(musicguy) {
             $http({
                 url:'/band-manager',
                 method: 'GET',
-                params:{ instruments:'drummer'}
+                 params:{ instruments:'drummer'}
             }).then(function(response) {
                 let musicians = response.data;
                 console.log(musicians)
                 musicians.forEach(function(element) {
-                  if(musicguy === element.value){
-                    musicianPeople.push(element.value);
+                  if(musicguy.toLowerCase === element.value){
+                    musicianPeople.push('gabe')
                   }
                 })
             });
