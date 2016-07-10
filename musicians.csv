@@ -1,4 +1,4 @@
-name,password,drummer,leadGuitarist,backUpGuitarist,leadSinger,backUpSinger,bassist,tambourine,cowBellPlayer\
+name,password,drummer,leadGuitarist,backUpGuitarist,leadSinger,backUpSinger,bassist,tambourine,cowBellPlayer,rating,hourlyRate,email
 James,password1,false,true,false,false,true,true,false,false,true,4,50,james@bandmail.com
 Mark,password2,true,false,false,false,false,false,true,true,true,3,100,mark@bandmail.com
 Tom,password3,false,false,false,true,true,false,true,false,false,5,45,tom@bandmail.com
