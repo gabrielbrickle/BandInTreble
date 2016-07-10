@@ -1,4 +1,4 @@
-name,password,instrumentNeeded
+name,password,instrumentNeeded,phone,email
 Bob,psswrd1,drummer,555-555-5555,bob@band.com
 Kat,psswrd2,leadGuitarist,555-555-5555,kat@band.com
 Phil,psswrd3,leadSinger,555-555-5555,phil@band.com

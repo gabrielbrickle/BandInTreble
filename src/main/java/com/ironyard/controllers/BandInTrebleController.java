@@ -9,10 +9,8 @@ import com.ironyard.services.UserRepository;
 import com.ironyard.utilities.PasswordStorage;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Column;
@@ -122,34 +120,34 @@ public class BandInTrebleController
     //
     //THE STRING RETURNED HAS TO MATCH THE VARIABLE EXACTLY SO I CAN MANIPULATE IT PROPERLY
     @RequestMapping(path = "/band-manager", method = RequestMethod.GET)
-    public Iterable<Musician> getMusician()
+    public Iterable<Musician> getMusician(HttpSession session, String instruments)
     {
-//        switch (bandManager.getInstrumentNeeded())
-//        {
-//            case "all":
+        switch (instruments)
+        {
+            case "all":
                 return musicians.findAll();
-//            case "drummer":
-//                return musicians.findByDrummer(true);
-//            case "leadGuitarist":
-//                return musicians.findByLeadGuitarist(true);
-//            case "backupGuitarist":
-//                return musicians.findByBackupGuitarist(true);
-//            case "leadSinger":
-//                return musicians.findByLeadSinger(true);
-//            case "backupSinger":
-//                return musicians.findByBackupSinger(true);
-//            case "bassist":
-//                return musicians.findByBassist(true);
-//            case "tambourine":
-//                return musicians.findByTambourine(true);
-//            case "cowBellPlayer":
-//                return musicians.findByCowBellPlayer(true);
-//            case "pianist":
-//                return musicians.findByPianist(true);
-//            default:
-//                System.err.printf("Error in Controller '/band-manager' GET route.  BandManager recieved a value of: %s", bandManager.getInstrumentNeeded());
-//                return null;
-//        }
+            case "drummer":
+                return musicians.findByDrummer(true);
+            case "leadGuitarist":
+                return musicians.findByLeadGuitarist(true);
+            case "backupGuitarist":
+                return musicians.findByBackupGuitarist(true);
+            case "leadSinger":
+                return musicians.findByLeadSinger(true);
+            case "backupSinger":
+                return musicians.findByBackupSinger(true);
+            case "bassist":
+                return musicians.findByBassist(true);
+            case "tambourine":
+                return musicians.findByTambourine(true);
+            case "cowBellPlayer":
+                return musicians.findByCowBellPlayer(true);
+            case "pianist":
+                return musicians.findByPianist(true);
+            default:
+                System.err.printf("Error in Controller '/band-manager' GET route.  Invalid value of 'instruments': %s", instruments);
+                return null;
+        }
     }
 
     // band-manager POST route
@@ -197,32 +195,44 @@ public class BandInTrebleController
     // returns an ArrayList of available gigs
     //
     @RequestMapping(path = "/musician", method = RequestMethod.GET)
-    public Iterable<BandManager> getGig()
+    public Iterable<BandManager> getGig(HttpSession session,
+                                        Boolean drummer,
+                                        Boolean leadGuitarist,
+                                        Boolean backupGuitarist,
+                                        Boolean leadSinger,
+                                        Boolean backupSinger,
+                                        Boolean bassist,
+                                        Boolean tambourine,
+                                        Boolean cowBellPlayer,
+                                        Boolean pianist)
     {
-//        List<BandManager> gigs = new ArrayList<>();
-//
-//        //using in-line conditionals to save space.  just filling the array with the appropriate info
-//        if (musician.getDrummer()){gigs.addAll((List)band_managers.findByInstrumentNeeded("drummer"));}
-//        if (musician.getLeadGuitarist()){gigs.addAll((List)band_managers.findByInstrumentNeeded("leadGuitarist"));}
-//        if (musician.getBackupGuitarist()){gigs.addAll((List)band_managers.findByInstrumentNeeded("backupGuitarist"));}
-//        if (musician.getLeadSinger()){gigs.addAll((List)band_managers.findByInstrumentNeeded("leadSinger"));}
-//        if (musician.getBackupSinger()){gigs.addAll((List)band_managers.findByInstrumentNeeded("backupSinger"));}
-//        if (musician.getBassist()){gigs.addAll((List)band_managers.findByInstrumentNeeded("bassist"));}
-//        if (musician.getTambourine()){gigs.addAll((List)band_managers.findByInstrumentNeeded("tambourine"));}
-//        if (musician.getCowBellPlayer()){gigs.addAll((List)band_managers.findByInstrumentNeeded("cowBellPlayer"));}
-//        if (musician.getPianist()){gigs.addAll((List)band_managers.findByInstrumentNeeded("pianist"));}
-//
-//        if (gigs.isEmpty())
-//        {
-//            System.err.printf("Error in Controller '/musicians' GET route.  Musician recieved an invalid boolean set.");
-//            return null;
-//        }
-//        else
-//        {
-//            return gigs;
-//        }
+        User user = users.findOne((Integer) session.getAttribute("userId"));
 
-        return band_managers.findAll();
+        List<BandManager> gigs = new ArrayList<>();
+
+        //using in-line conditionals to save space.  just filling the array with the appropriate info
+        if (drummer){gigs.addAll((List)band_managers.findByInstrumentNeeded("drummer"));}
+        if (leadGuitarist){gigs.addAll((List)band_managers.findByInstrumentNeeded("leadGuitarist"));}
+        if (backupGuitarist){gigs.addAll((List)band_managers.findByInstrumentNeeded("backupGuitarist"));}
+        if (leadSinger){gigs.addAll((List)band_managers.findByInstrumentNeeded("leadSinger"));}
+        if (backupSinger){gigs.addAll((List)band_managers.findByInstrumentNeeded("backupSinger"));}
+        if (bassist){gigs.addAll((List)band_managers.findByInstrumentNeeded("bassist"));}
+        if (tambourine){gigs.addAll((List)band_managers.findByInstrumentNeeded("tambourine"));}
+        if (cowBellPlayer){gigs.addAll((List)band_managers.findByInstrumentNeeded("cowBellPlayer"));}
+        if (pianist){gigs.addAll((List)band_managers.findByInstrumentNeeded("pianist"));}
+
+        session.setAttribute("userId", user.getId());
+        if (gigs.isEmpty())
+        {
+            System.err.printf("Error in Controller '/musicians' GET route.  Musician recieved an invalid boolean set.");
+            return null;
+        }
+        else
+        {
+            return gigs;
+        }
+
+
     }
 
     // musician POST route
@@ -276,7 +286,9 @@ public class BandInTrebleController
 
             //start parse
             User user= new User(fields[0], PasswordStorage.createHash(fields[1]));
+            user.setEmail(fields[13]);
             User newUser = users.save(user);
+
 
             //get boolean values
             Boolean drummer = Boolean.valueOf(fields[2]);
@@ -288,8 +300,10 @@ public class BandInTrebleController
             Boolean tambourine = Boolean.valueOf(fields[8]);
             Boolean cowBellPlayer = Boolean.valueOf(fields[9]);
             Boolean pianist = Boolean.valueOf(fields[10]);
+            double rating = Double.valueOf(fields[11]);
+            double rate = Double.valueOf(fields[12]);
 
-            Musician musician = new Musician(drummer, leadGuitarist, backupGuitarist, leadSinger, backupSinger, bassist, tambourine, cowBellPlayer, pianist, newUser);
+            Musician musician = new Musician(drummer, leadGuitarist, backupGuitarist, leadSinger, backupSinger, bassist, tambourine, cowBellPlayer, pianist, newUser,rating, rate);
             musicians.save(musician);
         }
     }
@@ -304,9 +318,10 @@ public class BandInTrebleController
             String line = fileScanner.nextLine();
             String[] fields = line.split(",");
 
-
             //start parse
             User user= new User(fields[0], PasswordStorage.createHash(fields[1]));
+            user.setEmail(fields[4]);
+            user.setPhoneNumber(fields[3]);
             User newUser = users.save(user);
             BandManager bandManager = new BandManager(fields[2], newUser);
 
