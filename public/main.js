@@ -25,7 +25,7 @@ module.exports = function(app) {
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
-            // $location.path('/available');
+            $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
           $scope.musician =  MusicFactory.getMusician($scope.instrument);
 
@@ -48,6 +48,7 @@ module.exports = function(app) {
 module.exports = function(app) {
     app.controller('LookingForController', ['$scope', '$http', function($scope, $http) {
       $scope.musician = "";
+      
     }]);
 };
 
@@ -75,7 +76,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/lookingfor', {
-            controller: 'LookingForController',
+            controller: 'HomeController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);

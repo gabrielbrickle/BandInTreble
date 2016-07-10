@@ -15,7 +15,7 @@ module.exports = function(app) {
     $scope.bandManagerSelect = function() {
             console.log($scope.instrument)
             // if ($scope.instrument === )
-            // $location.path('/available');
+            $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
           $scope.musician =  MusicFactory.getMusician($scope.instrument);
 

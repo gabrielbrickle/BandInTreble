@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/lookingfor', {
-            controller: 'LookingForController',
+            controller: 'HomeController',
             templateUrl: 'templates/lookingfor.html',
         });
 }]);
