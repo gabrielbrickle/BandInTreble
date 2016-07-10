@@ -67,7 +67,9 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
-            });
+
+                  return musicianPeople;
+                      });
         },
         getBandManager: function() {
             $http({

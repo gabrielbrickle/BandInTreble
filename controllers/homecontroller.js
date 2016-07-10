@@ -18,9 +18,8 @@ module.exports = function(app) {
             $location.path('/lookingfor');
             // MusicFactory.getMusician.user();
           $scope.musician = MusicFactory.getMusician($scope.instrument);
-
-          console.log($scope.musician)
         }
+        console.log($scope.musician)
 ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)

@@ -115,7 +115,7 @@ public class BandInTrebleController
     }
 
     // band-manager GET route
-    // requires bandManager object
+    // requires String that matches a boolean in the musician class
     // returns a list of musicians fitting the
     //
     //THE STRING RETURNED HAS TO MATCH THE VARIABLE EXACTLY SO I CAN MANIPULATE IT PROPERLY
@@ -191,20 +191,20 @@ public class BandInTrebleController
 
 
     // musician GET route
-    // requires musician object
+    // requires a boolean for each of the booleans in the Musician object
     // returns an ArrayList of available gigs
     //
     @RequestMapping(path = "/musician", method = RequestMethod.GET)
     public Iterable<BandManager> getGig(HttpSession session,
-                                        Boolean drummer,
-                                        Boolean leadGuitarist,
-                                        Boolean backupGuitarist,
-                                        Boolean leadSinger,
-                                        Boolean backupSinger,
-                                        Boolean bassist,
-                                        Boolean tambourine,
-                                        Boolean cowBellPlayer,
-                                        Boolean pianist)
+                                        @RequestParam Boolean drummer,
+                                        @RequestParam Boolean leadGuitarist,
+                                        @RequestParam Boolean backupGuitarist,
+                                        @RequestParam Boolean leadSinger,
+                                        @RequestParam Boolean backupSinger,
+                                        @RequestParam Boolean bassist,
+                                        @RequestParam Boolean tambourine,
+                                        @RequestParam Boolean cowBellPlayer,
+                                        @RequestParam Boolean pianist)
     {
         User user = users.findOne((Integer) session.getAttribute("userId"));
 
