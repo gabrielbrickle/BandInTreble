@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/booking', {
-            controller: 'AvailableController',
+            controller: 'LookingForController',
             templateUrl: 'templates/booking.html',
         })
         .when('/lookingfor/:instrument', {
@@ -35,9 +35,9 @@ app.config(['$routeProvider', function($routeProvider) {
 //
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
     let musicianPeople = [];
-    let bandManagerPeople = [];
+    let bandmanagerPeople = [];
     let instruments = [];
-    let musician = []
+
     return {
         // todo: rename this to be more specific
         postThis: function(name) {
@@ -74,34 +74,23 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
+
                 console.log(musicianPeople);
                 console.log(musicianPeople.length)
             });
             return musicianPeople;
         },
-        getBandManager: function(bandguy) {
+        getBandManager: function() {
             $http({
                 url: '/musician',
                 method: 'GET',
-                params:{
-                drummer:false,
-                leadGuitarist:true,
-                backupGuitarist:false,
-                leadSinger:false,
-                backupSinger:true,
-                bassist:true,
-                tambourine:false,
-                cowBellPlayer:false,
-                pianist:true,
-                }
             }).then(function(response) {
-                let bookers = response.data
-                console.log(bookers);
-                bandManagerPeople.forEach(function(element) {
-                    bandManagerPeople.push(element.value);
+                let bandmanager = response.data
+                console.log(bandmanager);
+                bandmanager.forEach(function(element) {
+                    bandmanagerPeople.push(element.value);
                 })
-                return bandManagerPeople;
-                console.log(bandmanagerPeople)
+                console.log(bandmanager)
 
             });
 
