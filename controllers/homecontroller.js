@@ -18,13 +18,13 @@ module.exports = function(app) {
                 $location.path(`/lookingfor/${$scope.instrument}`);
                 // $scope.musicians = MusicFactory.getMusician($scope.instrument);
             }
-            //Right side box on homepage
+            ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
-                $location.path('/booking');
-            // let logan = MusicFactory.getBandManager();
-            console.log("logan");
+                // $location.path('/available');
+            let logan = MusicFactory.getBandManager();
+            console.log(logan);
 
-         }
-     }]);
+        }
+    }]);
 };
