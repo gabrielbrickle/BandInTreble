@@ -12,6 +12,7 @@ module.exports = function(app) {
         $scope.instrument = "";
         $scope.managers = "";
         $scope.musicians= [];
+        $scope.Musicianzzz=[]
         //Left side box on homepage
         $scope.bandManagerSelect = function() {
                 // console.log($scope.instrument
@@ -22,7 +23,7 @@ module.exports = function(app) {
         $scope.musicianSelect = function() {
             console.log($scope.managers)
                 // $location.path('/available');
-            let logan = MusicFactory.getBandManager();
+            $location.path(`/lookingfor/${$scope.managerzzz}`)
             console.log(logan);
 
         }
