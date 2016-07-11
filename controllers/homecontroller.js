@@ -1,31 +1,27 @@
 module.exports = function(app) {
-    app.controller('HomeController',['MusicFactory','$scope','$location',function(MusicFactory,$scope, $location) {
+    app.controller('HomeController', ['MusicFactory', '$scope', '$location', function(MusicFactory, $scope, $location) {
         $scope.loginClick = function() {
-          MusicFactory.postThis($scope.username)
+            MusicFactory.postThis($scope.username)
             console.log('clicked')
-            if ($scope.username != null){
-              $location.path('/home');
+            if ($scope.username != null) {
+                $location.path('/home');
             } else {
-              alert ('Please enter a username');
+                alert('Please enter a username');
             }
         }
-    $scope.instrument = "";
-    $scope.managers = "";
-//Left side box on homepage
-    $scope.bandManagerSelect = function() {
-            console.log($scope.instrument)
-            // if ($scope.instrument === )
-            // $location.path('/available');
-            // MusicFactory.getMusician.user();
-        $scope.musician=  MusicFactory.getMusician();
-
-        }
-///Right side box on homepage
+        $scope.instrument = "";
+        $scope.managers = "";
+        $scope.musicians= [];
+        //Left side box on homepage
+        $scope.bandManagerSelect = function() {
+                // console.log($scope.instrument
+                $location.path(`/lookingfor/${$scope.instrument}`);
+                // $scope.musicians = MusicFactory.getMusician($scope.instrument);
+            }
+            ///Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
-            ////need to make sure they can select multiple before they are redirected to the lookingfor page
-            // $location.path('/lookingfor');
-            // MusicFactory.getBandManager.user();
+                // $location.path('/available');
             let logan = MusicFactory.getBandManager();
             console.log(logan);
 
