@@ -274,7 +274,9 @@ li a:hover {
 .finalinfo input {
   border-radius: 5px;
   font-size: 15px;
-  border: solid 2px #00bcd4; }
+  border: solid 2px #00bcd4;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #929292; }
 
 .finalinfo button {
   font-size: 20px;
