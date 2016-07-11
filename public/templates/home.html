@@ -5,7 +5,7 @@
   <h4>Tell us what type of musician you're looking for.</h4>
     <select ng-model="instrument">
     <option value="leadGuitarist">Lead Guitarist</option>
-    <option value="drummer" selected>Drummer</option>
+    <option value="drummer">Drummer</option>
     <option value="backupGuitarist">Backup Guitarist</option>
     <option value="leadGuitarist">Lead Guitarist</option>
     <option value="backupSinger">Backup Singer</option>
@@ -18,20 +18,20 @@
 
 
 </div>
-<div class="musician">
+<div class="bandmanager">
   <h2>I'm a musician </h2>
   <h4>Tell us what type of gig you're looking for.</h4>
-    <form action="" >
-    <input ng-model="managers" type="checkbox" value="leadGuitarist">Lead Guitarist
-    <input ng-model="managers" type="checkbox" value="drummer">drummer
-    <input ng-model="managers" type="checkbox" value="backupGuitarist">Backup Guitarist
-    <input ng-model="managers" type="checkbox" value="leadGuitarist">Lead Guitarist
-    <input ng-model="managers" type="checkbox" value="backupSinger">Backup Singer
-    <input ng-model="managers" type="checkbox" value="bassist">Bassist
-    <input ng-model="managers" type="checkbox" value="tambourine">Tambourine
-    <input ng-model="managers" type="checkbox" value="cowBellPlayer">Cowbell Player
-    <input ng-model="managers" type="checkbox" value="pianist">Pianist
-    </form>
+    <select ng-model="managers">
+    <option value="leadGuitarist">Lead Guitarist</option>
+    <option value="drummer">drummer</option>
+    <option value="backupGuitarist">Backup Guitarist</option>
+    <option value="leadGuitarist">Lead Guitarist</option>
+    <option value="backupSinger">Backup Singer</option>
+    <option value="bassist">Bassist</option>
+    <option value="tambourine">Tambourine</option>
+    <option value="cowBellPlayer">Cowbell Player</option>
+    <option value="pianist">Pianist</option>
+</select>
     <button type="button" name="button" ng-click="musicianSelect()">Let's go!</button>
 </div>
 </div>

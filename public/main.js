@@ -1,8 +1,12 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = function(app) {
-    app.controller('AvailableController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-            }]);
+    app.controller('AvailableController', ['$scope', '$http','MusicFactory','$routeParams', '$location', function($scope,$http,$MusicFactory,$routeParams,$location) {
+      $scope.musicianSelect = function() {
+              $location.path('/booking');
+          // let logan = MusicFactory.getBandManager();
+          console.log("logan");
+      }
+      }]);
         }
 
 // };
@@ -28,15 +32,15 @@ module.exports = function(app) {
                 $location.path(`/lookingfor/${$scope.instrument}`);
                 // $scope.musicians = MusicFactory.getMusician($scope.instrument);
             }
-            ///Right side box on homepage
+            //Right side box on homepage
         $scope.musicianSelect = function() {
             console.log($scope.managers)
-                // $location.path('/available');
-            let logan = MusicFactory.getBandManager();
-            console.log(logan);
+                $location.path('/booking');
+            // let logan = MusicFactory.getBandManager();
+            console.log("logan");
 
-        }
-    }]);
+         }
+     }]);
 };
 
 },{}],3:[function(require,module,exports){
@@ -46,8 +50,8 @@ module.exports = function(app) {
 
       $scope.bookClick = function() {
         console.log("clicking book");
-        $location.path('/booking');
-        
+        $location.path('/lookingfor');
+
       }
 
     }]);
@@ -77,7 +81,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/available.html',
         })
         .when('/booking', {
-            controller: 'LookingForController',
+            controller: 'AvailableController',
             templateUrl: 'templates/booking.html',
         })
         .when('/lookingfor/:instrument', {
@@ -91,9 +95,9 @@ app.config(['$routeProvider', function($routeProvider) {
 //
 app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
     let musicianPeople = [];
-    let bandmanagerPeople = [];
+    let bandManagerPeople = [];
     let instruments = [];
-
+    let musician = []
     return {
         // todo: rename this to be more specific
         postThis: function(name) {
@@ -130,23 +134,34 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
-
                 console.log(musicianPeople);
                 console.log(musicianPeople.length)
             });
             return musicianPeople;
         },
-        getBandManager: function() {
+        getBandManager: function(bandguy) {
             $http({
                 url: '/musician',
                 method: 'GET',
+                params:{
+                drummer:false,
+                leadGuitarist:true,
+                backupGuitarist:false,
+                leadSinger:false,
+                backupSinger:true,
+                bassist:true,
+                tambourine:false,
+                cowBellPlayer:false,
+                pianist:true,
+                }
             }).then(function(response) {
-                let bandmanager = response.data
-                console.log(bandmanager);
-                bandmanager.forEach(function(element) {
-                    bandmanagerPeople.push(element.value);
+                let bookers = response.data
+                console.log(bookers);
+                bandManagerPeople.forEach(function(element) {
+                    bandManagerPeople.push(element.value);
                 })
-                console.log(bandmanager)
+                return bandManagerPeople;
+                console.log(bandmanagerPeople)
 
             });
 
