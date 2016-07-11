@@ -47,6 +47,7 @@ module.exports = function(app) {
       $scope.bookClick = function() {
         console.log("clicking book");
         $location.path('/booking');
+        
       }
 
     }]);
@@ -129,7 +130,6 @@ app.factory('MusicFactory', ['$http', '$location', function($http, $location) {
                     })
 
                 })
-
                 console.log(musicianPeople);
                 console.log(musicianPeople.length)
             });
